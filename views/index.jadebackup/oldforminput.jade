@@ -1,0 +1,17 @@
+//#addUser
+            //fieldset
+                 //- 
+                        input#inputUserName(type='text', placeholder='Location name')
+                        input#inputUserEmail(type='text', placeholder='Information')
+                        br
+                        input#inputUserFullname(type='text', placeholder='Latitude',readonly=true)
+                        input#inputUserAge(type='text', placeholder='Longitude',readonly=true)
+
+                        br
+                        button#btnAddUser Add User
+                        
+                        
+pager = new Pager('results', 3);
+       pager.init();
+       pager.showPageNav('pager', 'pageNavPosition');
+       pager.showPage(1); 

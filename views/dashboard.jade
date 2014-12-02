@@ -1,0 +1,121 @@
+script(src='http://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js')
+script(src='js/global.js')
+script(src='js/tablesaw.js')
+script(src='js/bootstrap.js')
+link(rel='stylesheet', href='/css/tablesaw.css')
+link(href='/css/style.css', rel='stylesheet', media='screen')
+link(rel='stylesheet', href='/css/bootstrap.min.css')
+link(rel='stylesheet', href='/css/bootstrap.css')
+
+meta(name='viewport', content='width=device-width, initial-scale=.5, maximum-scale=1')
+
+nav.navbar.navbar-default.navbar-fixed-top(role='navigation')
+    //
+         Brand and toggle get grouped for better mobile display 
+      .navbar-header
+        button.navbar-toggle(type='button', data-target='#navbarCollapse', data-toggle='collapse')
+          span.sr-only Toggle navigation
+          span.icon-bar
+          span.icon-bar
+          span.icon-bar
+        a.navbar-brand(href='#') Save Locations
+      //
+         Collection of nav links and other content for toggling 
+      #navbarCollapse.collapse.navbar-collapse
+        ul.nav.navbar-nav
+          li.active
+            a(href='#') Home
+          li
+            a(href='#') Profile
+          li
+            a(href='#') Messages
+        ul.nav.navbar-nav.navbar-right
+          li
+            a(href='#') Login
+block content
+
+
+
+
+p #{ViewLocations.userid}
+
+// Wrapper
+       #wrapper
+           // USER INFO
+
+                   
+           // /USER INFO
+           h2 Saved Locations
+
+
+           #userList
+               table#results.table.table-striped.table-condensed.table-responsive.table-bordered(data-mode='stack')
+                
+
+                   thead
+                       th Location
+                       th Information
+                       th Latitude
+                       th Longitude
+                       th Map
+                       th Images
+                       th Delete?
+                   tbody
+                   
+                   
+                   #pageNavPosition
+#basicModal.modal.fade(tabindex="-1", role="dialog", aria-labelledby="basicModal", aria-hidden="true")
+  .modal-dialog
+    .modal-content
+      .modal-header
+        button.close(type="button", data-dismiss="modal", aria-hidden="true") #38;
+        h4#myModalLabel.modal-title Location Specific Information
+      .modal-body
+          h2 Location Information
+          p
+          strong Name:
+          span#userInfoName
+          br
+          strong Information:
+          span#userInfoAge
+          br
+          strong latitude:
+          span#userInfoGender
+          br
+          strong Longitude:
+          span#userInfoLocation
+
+      .modal-footer
+        button.btn.btn-default(type="button", data-dismiss="modal") Close
+
+
+
+
+
+
+#addUser                
+      fieldset            
+        form.form-horizontal.fieldset
+            .form-group
+                label.control-label.col-xs-2(for='input#inputUserName') Location Name
+                .col-xs-10
+                  input#inputUserName.form-control(type='text', placeholder='Location Name')
+              .form-group
+                label.control-label.col-xs-2(for='input#inputUserEmail') Location Information
+                .col-xs-10
+                  input#inputUserEmail.form-control(type='text', placeholder='Information')
+              .form-group
+                label.control-label.col-xs-2(for='inputUserFullname') Latitude (Auto )
+                .col-xs-10
+                  input#inputUserFullname.form-control(type='text', placeholder='Auto Filled')
+                  .form-group
+                label.control-label.col-xs-2(for='inputUserAge') Longitude (Auto Filled)
+                .col-xs-10
+                  input#inputUserAge.form-control(type='text', placeholder='Auto Filled')
+              .form-group
+                .col-xs-offset-4.col-xs-10
+                  button#btnAddUser.btn.btn-primary(type='submit') Save Location!
+                                
+                
+                
+ include getLocation.html
