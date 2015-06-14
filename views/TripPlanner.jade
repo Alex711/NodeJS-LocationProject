@@ -1,0 +1,71 @@
+doctype html
+html
+    head
+        title= title
+        meta(name='viewport', content='width=device-width, initial-scale=1.0')
+        link(href='/css/bootstrap.min.css', rel='stylesheet', media='screen')
+        script(src='http://code.jquery.com/jquery.js')
+        script(src='js/bootstrap.min.js')
+        script(src='https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=true&libraries=places')
+        script(src='js/TripPlanner.js')
+        script(src='js/jquery.dynatable.js')
+
+        //script(src='http://maps.googleapis.com/maps/api/js?sensor=false&libraries=places')
+
+
+
+
+    body
+    .container
+        h1 Register Page
+        p.lead Hello My friend
+        button.stepTwo.btn(onclick='stepTwo()', type='button') Step Two
+
+html
+    body
+        style.
+          html, body, #map-canvas {
+          height: 80%;
+          margin: 0px;
+          padding: 0px
+          }
+          #panel {
+          position: absolute;
+          top: 5px;
+          left: 50%;
+          margin-left: -180px;
+          z-index: 5;
+          background-color: #fff;
+          padding: 5px;
+          border: 1px solid #999;
+          }
+
+
+
+        #map-canvas(style='float:left;width:60%;height:100%;left:1%')
+        #control_panel(style='float:right;width:40%;text-align:left;padding-top:20px')
+            div(style='margin:20px;border-width:2px;')
+                b Start:
+                    input#start.form-control(type='text')
+                br
+                b Waypoints:
+                    .form-inline
+                        .wayPointContainer
+                        input#wayPoints.form-control(type='text', name='wayPointField')
+                        button.fire.btn(onclick='addWayPointForm()', type='button') Button
+                b End:
+                    input#end.form-control(type='text')
+                br
+                input(type='submit', onclick='calcRoute();')
+
+            #directions_panel(style='margin:20px;background-color:#FFEE77;')
+
+
+    body
+        table#my-ajax-table
+            thead
+                th Band
+                th Song
+            tbody
+
+

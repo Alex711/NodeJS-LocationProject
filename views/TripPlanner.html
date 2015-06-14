@@ -1,0 +1,17 @@
+<!DOCTYPE html><html><head><title></title><meta name="viewport" content="width=device-width, initial-scale=1.0"><link href="/css/bootstrap.min.css" rel="stylesheet" media="screen"><script src="http://code.jquery.com/jquery.js"></script><script src="js/bootstrap.min.js"></script><script src="https://maps.googleapis.com/maps/api/js?v=3.exp&amp;signed_in=true"></script><script src="js/TripPlanner.js"></script></head><body></body><div class="container"><h1>Register Page</h1><p class="lead">Hello My friend</p></div></html><html><body><style>html, body, #map-canvas {
+height: 100%;
+margin: 0px;
+padding: 0px
+}
+#panel {
+position: absolute;
+top: 5px;
+left: 50%;
+margin-left: -180px;
+z-index: 5;
+background-color: #fff;
+padding: 5px;
+border: 1px solid #999;
+}
+
+</style><div id="map-canvas" style="float:left;width:60%;height:100%;"></div><div id="control_panel" style="float:right;width:40%;text-align:left;padding-top:20px"><div style="margin:20px;border-width:2px;"><b>Start:<input id="start" type="text" class="form-control"></b><br><b>Waypoints:<div class="form-inline"><div class="wayPointContainer"></div><input id="wayPoints" type="text" name="wayPointField" class="form-control"><button onclick="addWayPointForm()" type="button" class="fire btn">Button</button></div></b><b>End:<input id="end" type="text" class="form-control"></b><br><input type="submit" onclick="calcRoute();"><input type="submit" onclick="getWaypointValues();"></div><div id="directions_panel" style="margin:20px;background-color:#FFEE77;"></div></div></body></html>

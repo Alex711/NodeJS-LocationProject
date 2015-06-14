@@ -38,10 +38,40 @@ passport.use(new LocalStrategy(Account.authenticate()));
 passport.serializeUser(Account.serializeUser());
 passport.deserializeUser(Account.deserializeUser());
 
-// mongoose
-mongoose.connect('mongodb://localhost/passport_local_mongoose');
 
-schema = new mongoose.Schema({ name: 'string', information: 'string', lat: 'string', lon: 'string', userid: 'string' });
+// mongoose
+var db = mongoose.connection;
+mongoose.connect('mongodb://localhost/passport_local_mongoose');
+// **** old schema for the places save location ****
+//schema = new mongoose.Schema({ name: 'string', information: 'string', lat: 'string', lon: 'string', userid: 'string' });
+//Locations = mongoose.model('Locations', schema);
+
+
+//schema = new mongoose.Schema({ Origin: 'string', Destination: 'string', waypoints: 'string', Notes: 'string', userid: 'string' });
+//RoutePlanner = mongoose.model('RoutePlanner', schema);
+
+var schema = new mongoose.Schema({
+    name: String,
+    start: {
+         address: String,
+         lat: String,
+        lon: String
+    },
+    date: {
+        type: Date,
+        default: Date.now
+    },
+    Waypoints:[{
+        description: String,
+        lat:String,
+        lon: String,
+        date: {
+            type: Date,
+            default: Date.now
+        }
+    }]
+});
+
 Locations = mongoose.model('Locations', schema);
 
 // routes
