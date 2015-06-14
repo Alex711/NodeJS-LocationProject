@@ -1,7 +1,7 @@
-# User Authentication With Passport.js
+NodeJS-LocationProject
+======================
 
-- In this post I’ll demonstrate how to add user authentication to Node.js with Passport.js. 
-- View the blog post here: http://mherman.org/blog/2013/11/11/user-authentication-with-passport-dot-js/
+Personal Location Find project.
 
-
-
+This project is in early stages - This allows users to save locations of places they've been to / currently at and add information.
+This uses frameworks such as PassportJS to securely allow users to login.
