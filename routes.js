@@ -1,6 +1,8 @@
 var passport = require('passport');
 
 var Account = require('./models/account');
+var Locations = require('./models/Locations');
+
 
 module.exports = function (app) {
 
@@ -43,19 +45,19 @@ module.exports = function (app) {
 
     });
 
-    app.get('/postStep1Route', function (req, res) {
-        console.log(req.user.id);
-        var step1Route = new Trip({
-            name: 'Thor'
+    app.post('/postStep1Route', function (req, res) {
+        console.log(req.body);
+        var step1Route = new Locations({
+            name: req.body.name
             , start: {
-                address: 'test',
-                lat: 'test',
-                lon: 'test'
+                address: req.body.address,
+                lat: req.body.lat0,
+                lon: req.body.lon0
             }
             , wayPoints: [{
-                description:'test',
-                lat:'test',
-                lon:'test'
+                description:req.body.desc,
+                lat:req.body.lat1,
+                lon:req.body.lon1
             }]
         });
 
@@ -75,7 +77,11 @@ module.exports = function (app) {
     });
 
     app.get('/TripPlanner', function(req, res) {
+        console.log(req.user.id);
+
         res.render('TripPlanner', { });
+
+
     });
 
     //inserts location
@@ -130,4 +136,6 @@ module.exports = function (app) {
         res.send("pong!", 200);
     });
 
-}
+};
+
+

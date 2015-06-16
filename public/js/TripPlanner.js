@@ -11,6 +11,35 @@ var routeArray;
 $( document ).ready(function() {
     console.log( "ready!" );
     $( "#stepTwo" ).hide();
+    var newUser =  {
+        name: "The name of trip",
+        address:"adddress",
+        lat0: "startlat",
+        lon0: "startLon",
+        description: "this is a desc",
+        lat1:"waypointLat",
+        lon1: "wayPointon"
+
+    };
+
+    $.ajax({
+        type: 'POST',
+        data: newUser,
+        url: '/postStep1Route',
+        dataType: 'JSON'
+
+    }).done(function( response ) {
+
+        // Check for a successful (blank) response
+        if (response.msg === '') {
+        }
+        else {
+            alert('Error: ' + response.msg);
+        }
+
+        // Update the table
+        console.log("posted");
+    });
 
 
 
