@@ -13,12 +13,14 @@ $( document ).ready(function() {
     $( "#stepTwo" ).hide();
     var newUser =  {
         name: "The name of trip",
-        address:"adddress",
-        lat0: "startlat",
-        lon0: "startLon",
-        description: "this is a desc",
-        lat1:"waypointLat",
-        lon1: "wayPointon"
+        tripDesc:"This is a description of the trip",
+        address:"address",
+        startLat: "startlat",
+        startLon: "startLon",
+        wayPointname:'wayPointName',
+        wayPointDescription: "this is a desc",
+        wayPointLat:"waypointLat",
+        wayPointLon: "wayPointon"
 
     };
 
@@ -61,13 +63,52 @@ function getLocation() {
 function stepTwo() {
 
     console.log("test");
-    $( "#control_panel" ).hide();
-    $( "#map-canvas" ).hide();
-    $( "#directions_panel" ).hide();
-    $( "#stepTwo" ).show();
+    $("#control_panel").hide();
+    $("#map-canvas").hide();
+    $("#directions_panel").hide();
+    $("#stepTwo").show();
 
 
     console.log(routeArray);
+
+//    var text = '{ "records" : [' +
+//        '{ "Band":"John" , "Song":"Doe" }]}';
+
+    var text = '{ "Band":"John" , "Song":"Doe" }]}';
+
+
+    $('#my-final-table').dynatable({
+        dataset: {
+            records: [
+                {
+                    "band": "I am record one",
+                    "song": "Fetched by AJAX"
+                },
+                {
+                    "band": "I am record two",
+                    "song": "Cuz it's awesome"
+                },
+                {
+                    "band": "I am record three",
+                    "song": "Yup, still AJAX"
+                }
+            ],
+            "queryRecordCount": 3,
+            "totalRecordCount": 3
+
+        }
+    });
+
+    $.getJSON('/getTrip', function(data) {
+        console.log(data);
+    });
+
+    $.getJSON('/getTrip', function(data) {
+
+
+
+    });
+
 
 }
 

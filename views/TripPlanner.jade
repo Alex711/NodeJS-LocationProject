@@ -4,13 +4,14 @@ html
         title= title
         meta(name='viewport', content='width=device-width, initial-scale=1.0')
         link(href='/css/bootstrap.min.css', rel='stylesheet', media='screen')
+        link(rel='stylesheet', href='/css/jquery.dynatable.css')
         script(src='http://code.jquery.com/jquery.js')
         script(src='js/bootstrap.min.js')
         script(src='https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=true&libraries=places')
         script(src='js/TripPlanner.js')
         script(src='js/jquery.dynatable.js')
 
-        //script(src='http://maps.googleapis.com/maps/api/js?sensor=false&libraries=places')
+    //script(src='http://maps.googleapis.com/maps/api/js?sensor=false&libraries=places')
 
 
 
@@ -41,7 +42,6 @@ html
           }
 
 
-
         #map-canvas(style='float:left;width:60%;height:100%;left:1%')
         #control_panel(style='float:right;width:40%;text-align:left;padding-top:20px')
             div(style='margin:20px;border-width:2px;')
@@ -61,11 +61,14 @@ html
             #directions_panel(style='margin:20px;background-color:#FFEE77;')
 
 
-    body
-        table#my-ajax-table
+        #dynaTable
+        table#my-final-table
             thead
                 th Band
                 th Song
             tbody
+
+
+
 
 

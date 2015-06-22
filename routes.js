@@ -18,7 +18,7 @@ module.exports = function (app) {
 
             Locations.find({userid: searchID}, function(err, location) {
                 if (err) return console.error(err);
-                res.render('dashboard', {ViewLocations:location});
+                res.render('TripPlanner', {ViewLocations:location});
                 //        res.render('dashboard', {user : req.user, ViewLocations:location});
 
 
@@ -45,26 +45,70 @@ module.exports = function (app) {
 
     });
 
-    app.post('/postStep1Route', function (req, res) {
-        console.log(req.body);
-        var step1Route = new Locations({
-            name: req.body.name
-            , start: {
-                address: req.body.address,
-                lat: req.body.lat0,
-                lon: req.body.lon0
-            }
-            , wayPoints: [{
-                description:req.body.desc,
-                lat:req.body.lat1,
-                lon:req.body.lon1
-            }]
+    app.get('/dashboard', function (req, res) {
+
+
+        res.render('dashboard');
+    });
+
+    app.get('/getTrip', function (req, res) {
+
+        Locations.find({}, function(err, Locations) {
+            if (err) throw err;
+            res.send(Locations);
+
+            // object of all the users
+            console.log(Locations);
+            console.log("Get Trip");
         });
 
-        step1Route.save(function(err, step1Route) {
-            if (err) return console.error(err);
-            console.dir(step1Route);
+    });
+
+    app.post('/postStep1Route', function (req, res) {
+
+        //Create
+//        var trip = new Locations();
+//        trip.tripName = 'tripName';
+//        trip.children.wayPointName = "First Waypoint";
+//        trip.children.wayPointDescription  = 'desc';
+//        trip.children.lat  = 'lat';
+//        trip.children.lon  = 'lon';
+
+        var trip = new Locations(
+            {
+                tripName: req.body.name,
+                tripDescription:req.body.tripDesc,
+                tripStartAddress:req.body.address,
+                userId: req.user.id,
+                children: [{ wayPointName:req.body.wayPointname, wayPointDescription: req.body.wayPointDescription,
+                    lat: req.body.wayPointLat, lon: req.body.wayPointLon}]
+
+            });
+
+        trip.save(function(err, saved) {
+            if(err) console.error(err);
+
         });
+
+
+//        var step1Route = new Locations({
+//            name: req.body.name
+//            , start: {
+//                address: req.body.address,
+//                lat: req.body.lat0,
+//                lon: req.body.lon0
+//            }
+//            , wayPoints: [{
+//                description:req.body.desc,
+//                lat:req.body.lat1,
+//                lon:req.body.lon1
+//            }]
+//        });
+//
+//        step1Route.save(function(err, step1Route) {
+//            if (err) return console.error(err);
+//            console.dir(step1Route);
+//        });
 
 
 
